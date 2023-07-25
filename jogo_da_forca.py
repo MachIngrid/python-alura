@@ -1,3 +1,4 @@
+import random
 def jogar():
     
     print("""***** Bem vindo ao jogo da Forca!*****
@@ -9,7 +10,19 @@ def jogar():
     |
     \\_________""")
 
-    palavra_secreta = "bufalo".upper()
+
+    arquivo = open('palavra_frutas.txt','r')
+    palavras = []
+
+    for line in arquivo:
+       linha = line.strip()
+       palavras.append(linha)
+
+    arquivo.close()  
+    numero = random.randrange(0,len(palavras))
+    palavra_secreta = palavras[numero].upper()
+    
+
     letras_acertadas=['_' for letra in palavra_secreta] # Adapta a quantidade de '_' para a palavra escolhida
     letras_faltando = str(letras_acertadas.count('_')) 
 
